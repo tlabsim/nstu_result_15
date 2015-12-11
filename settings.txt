@@ -1,0 +1,7 @@
+show_result_publication_summary
+is_result_search_enabled
+show_failers_details
+show_result_details
+
+
+=IF(LEN(P2) = 0, "", IF(LEN(P2) = 6, CONCATENATE(LEFT(P2, 2), "/", MID(P2, 3, 2), "/", MID(P2, 5, 2)), CONCATENATE(LEFT(P2, 1), "/", MID(P2,2, 2), "/", MID(P2, 4, 2))))
