@@ -85,6 +85,30 @@
 								echo '</td></tr>';
 							}
 						?>
+						<?php
+							if(!empty($result_details->general_science))
+							{
+								echo '<tr><td>General Science</td><td>';
+								echo $result_details->general_science;
+								echo '</td></tr>';
+							}
+						?>
+						<?php
+							if(!empty($result_details->general_math))
+							{
+								echo '<tr><td>General Mathematics</td><td>';
+								echo $result_details->general_math;
+								echo '</td></tr>';
+							}
+						?>
+						<?php
+							if(!empty($result_details->business_accounting))
+							{
+								echo '<tr><td>Business/Accounting</td><td>';
+								echo $result_details->business_accounting;
+								echo '</td></tr>';
+							}
+						?>
 					</tbody>
 				</table>
 			</div>
