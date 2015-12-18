@@ -7,7 +7,7 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"cartalyst/sentry": "2.1.*",
-		"frozennode/administrator": "dev-master"
+		"frozennode/administrator": " 4.*"
 	},
 	"require-dev": {
 		"way/generators": "~2.6",
