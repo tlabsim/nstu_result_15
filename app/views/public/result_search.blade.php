@@ -128,20 +128,11 @@
 			{
 				switch($list)
 				{
-					case "Merit":					
+					case "Merit":	
+						if(!$igw || empty($group))
+						{
+							$cong_text = 'Your merit position is '.$merit_position.'.';
 
-						$cong_text = 'Your merit position is '.$merit_position;
-						if($igwr)
-						{
-							if(!empty($group))
-							{
-								$cong_text .= " in ".$group." group";
-							}
-						}
-						$cong_text .= ".";
-						
-						if(!$igw)
-						{
 							if($merit_position > $total_seats)
 							{
 								$cong_text .= ' You are at position '.($merit_position-$total_seats).' of waiting list.';
@@ -174,6 +165,8 @@
 									break;
 							}
 
+							$cong_text = 'Your merit position is '.$merit_position." in ".$group." group.";
+
 							if($merit_position > $group_seats)
 							{
 								$cong_text .= ' You are at position '.($merit_position-$group_seats).' of waiting list (in '.$group.' group).';
@@ -197,11 +190,35 @@
 					case "FFQ":
 					case "FF":
 						$ff_seats = 0;
-						$gi ='';
 
-						if(!$igw)
+						if(!$igw || empty($group))
 						{
 							$ff_seats = $unit_info->ff_seats;
+
+							$cong_text = 'Your merit position is '.$merit_position.'.';
+						
+							if($merit_position > $ff_seats)
+							{
+								$cong_text .= ' You are at position '.($merit_position-$ff_seats).' of quota waiting list.';
+							}
+							else
+							{
+								$cong_text .= ' You are in the main (non-waiting) list.';
+							}
+
+							if(!empty($cum_merit) and is_numeric($cum_merit))
+							{
+								$cong_text .= '<br>Your cumulative merit position is '.$cum_merit.'.';
+
+								if($cum_merit > $total_seats)
+								{
+									$cong_text .= ' You are at position '.($cum_merit-$total_seats).' of merit waiting list.';
+								}
+								else
+								{
+									$cong_text .= ' So, you are also in the main merit list.';
+								}
+							}
 						}
 						else
 						{
@@ -209,50 +226,82 @@
 							{
 								case 'science':
 									$ff_seats = $unit_info->ff_science_seats;
-									$gi= 'science group ';
 									break;
 								case 'humanities':
 								case 'arts':
 									$ff_seats = $unit_info->ff_humanities_seats;
-									$gi= 'humanities group ';
 									break;
 								case 'commerce':
 								case 'business':
 								case 'business studies':
 									$ff_seats = $unit_info->ff_commerce_seats;
-									$gi= 'commerce group ';
 									break;
 								default:
 									$ff_seats = 0;
 									break;
 							}
-						}
 
+							$cong_text = 'Your merit position (in '.$group.' group quota) is '.$merit_position.'.';
 						
-						$cong_text = 'Your merit position (in '.$gi.'quota) is '.$merit_position.'.';
-						
-						if($merit_position > $ff_seats)
-						{
-							$cong_text .= ' You are at position '.($merit_position-$ff_seats).' of '.$gi.'quota waiting list.';
-						}
-						else
-						{
-							$cong_text .= ' You are in the main (non-waiting) list.';
-						}
-						
-						if(!empty($cum_merit) and is_numeric($cum_merit))
-						{
-							$cong_text .= '<br>Your cumulative merit position is '.$cum_merit.'.';
-
-							if($cum_merit > $total_seats)
+							if($merit_position > $ff_seats)
 							{
-								$cong_text .= ' You are at position '.($cum_merit-$total_seats).' of merit waiting list.';
+								$cong_text .= ' You are at position '.($merit_position-$ff_seats).' of '.$group .' group quota waiting list.';
 							}
 							else
 							{
-								$cong_text .= ' So, you are also in the main merit list.';
+								$cong_text .= ' You are in the main (non-waiting) list for '.$group .' group.';
 							}
-						}
+
+
+							if(!empty($cum_merit) and is_numeric($cum_merit))
+							{
+								$cong_text .= '<br>Your cumulative merit position is '.$cum_merit.'.';
+
+								if(!$igwr)
+								{
+									if($cum_merit > $total_seats)
+									{
+										$cong_text .= ' You are at position '.($cum_merit-$total_seats).' of merit waiting list.';
+									}
+									else
+									{
+										$cong_text .= ' So, you are also in the main merit list.';
+									}
+								}
+								else
+								{
+									$group_seats = 0;
+
+									switch(strtolower($group))
+									{
+										case 'science':
+											$group_seats = $unit_info->science_seats;
+											break;
+										case 'humanities':
+										case 'arts':
+											$group_seats = $unit_info->humanities_seats;
+											break;
+										case 'commerce':
+										case 'business':
+										case 'business studies':
+											$group_seats = $unit_info->commerce_seats;
+											break;
+										default:
+											$group_seats = 0;
+											break;
+									}
+
+									if($cum_merit > $group_seats)
+									{
+										$cong_text .= ' You are at position '.($cum_merit-$group_seats).' of merit waiting list of your group.';
+									}
+									else
+									{
+										$cong_text .= ' So, you are also in the main merit list of your group.';
+									}
+								}
+							}	
+						}		
 
 						echo '<div id="alert_passed" class="alert alert-info"  style="margin-top: 10px;">';			
 						echo '<h4>Congratulation! You are selected in Freedom Fighter quota.</h4>';
@@ -266,11 +315,35 @@
 					case "Tribal":
 					case "TQ":
 						$tribal_seats = 0;
-						$gi ='';
 
-						if(!$igw)
+						if(!$igw || empty($group))
 						{
 							$tribal_seats = $unit_info->tribal_seats;
+
+							$cong_text = 'Your merit position is '.$merit_position.'.';
+						
+							if($merit_position > $tribal_seats)
+							{
+								$cong_text .= ' You are at position '.($merit_position-$tribal_seats).' of quota waiting list.';
+							}
+							else
+							{
+								$cong_text .= ' You are in the main (non-waiting) list.';
+							}
+
+							if(!empty($cum_merit) and is_numeric($cum_merit))
+							{
+								$cong_text .= '<br>Your cumulative merit position is '.$cum_merit.'.';
+
+								if($cum_merit > $total_seats)
+								{
+									$cong_text .= ' You are at position '.($cum_merit-$total_seats).' of merit waiting list.';
+								}
+								else
+								{
+									$cong_text .= ' So, you are also in the main merit list.';
+								}
+							}
 						}
 						else
 						{
@@ -278,49 +351,83 @@
 							{
 								case 'science':
 									$tribal_seats = $unit_info->tribal_science_seats;
-									$gi= 'science group ';
 									break;
 								case 'humanities':
 								case 'arts':
 									$tribal_seats = $unit_info->tribal_humanities_seats;
-									$gi= 'humanities group ';
 									break;
 								case 'commerce':
 								case 'business':
 								case 'business studies':
 									$tribal_seats = $unit_info->tribal_commerce_seats;
-									$gi= 'commerce group ';
 									break;
 								default:
 									$tribal_seats = 0;
 									break;
 							}
-						}
-						
-						$cong_text = 'Your merit position (in '.$gi.'quota) is '.$merit_position.'.';
-						
-						if($merit_position > $tribal_seats)
-						{
-							$cong_text .= ' You are at position '.($merit_position-$tribal_seats).' of '.$gi.'quota waiting list.';
-						}
-						else
-						{
-							$cong_text .= ' You are in the main (non-waiting) list.';
-						}
 
-						if(!empty($cum_merit) and is_numeric($cum_merit))
-						{
-							$cong_text .= '<br>Your cumulative merit position is '.$cum_merit.'.';
-
-							if($cum_merit > $total_seats)
+							$cong_text = 'Your merit position (in '.$group.' group quota) is '.$merit_position.'.';
+						
+							if($merit_position > $tribal_seats)
 							{
-								$cong_text .= ' You are at position '.($cum_merit-$total_seats).' of merit waiting list.';
+								$cong_text .= ' You are at position '.($merit_position-$tribal_seats).' of '.$group .' group quota waiting list.';
 							}
 							else
 							{
-								$cong_text .= ' So, you are also in the main merit list.';
+								$cong_text .= ' You are in the main (non-waiting) list for '.$group .' group.';
 							}
-						}
+
+
+							if(!empty($cum_merit) and is_numeric($cum_merit))
+							{
+								$cong_text .= '<br>Your cumulative merit position is '.$cum_merit.'.';
+
+								if(!$igwr)
+								{
+									if($cum_merit > $total_seats)
+									{
+										$cong_text .= ' You are at position '.($cum_merit-$total_seats).' of merit waiting list.';
+									}
+									else
+									{
+										$cong_text .= ' So, you are also in the main merit list.';
+									}
+								}
+								else
+								{
+									$group_seats = 0;
+
+									switch(strtolower($group))
+									{
+										case 'science':
+											$group_seats = $unit_info->science_seats;
+											break;
+										case 'humanities':
+										case 'arts':
+											$group_seats = $unit_info->humanities_seats;
+											break;
+										case 'commerce':
+										case 'business':
+										case 'business studies':
+											$group_seats = $unit_info->commerce_seats;
+											break;
+										default:
+											$group_seats = 0;
+											break;
+									}
+
+									if($cum_merit > $group_seats)
+									{
+										$cong_text .= ' You are at position '.($cum_merit-$group_seats).' of merit waiting list of your group.';
+									}
+									else
+									{
+										$cong_text .= ' So, you are also in the main merit list of your group.';
+									}
+								}
+							}	
+						}						
+						
 
 						echo '<div id="alert_passed" class="alert alert-info"  style="margin-top: 10px;">';		
 						echo '<h4>Congratulation! You are selected in Tribal quota.</h4>';
