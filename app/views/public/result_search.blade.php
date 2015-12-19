@@ -268,6 +268,15 @@
 						$passed = true;
 						break;
 
+					case 'Invalid':
+						echo '<div id="alert_failed" class="alert alert-danger"  style="margin-top: 10px;">';			
+						echo '<h4>Sorry, your roll is marked as invalid.</h4>';
+						echo '<p>May be there was some problem in your answer script or with any of you documents. You are considered as failed.</p>';						
+						echo '</div>';
+						break;
+
+					case 'No':
+					case "Fail":	
 					default:
 						echo '<div id="alert_failed" class="alert alert-danger"  style="margin-top: 10px;">';			
 						echo '<h4>Sorry, you have failed.</h4>';

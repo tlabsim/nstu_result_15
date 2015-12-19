@@ -1,5 +1,5 @@
 <?php
-/*
+
 App::error(function($exception, $code) 
 {   
 
@@ -34,5 +34,5 @@ App::error(function($exception, $code)
             break;
     }
 });
-*/
+
 ?>

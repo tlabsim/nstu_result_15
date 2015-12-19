@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2015 at 04:54 PM
+-- Generation Time: Dec 19, 2015 at 04:23 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `download_links` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`link_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -121,14 +121,14 @@ CREATE TABLE IF NOT EXISTS `results` (
   `total_score` float(8,2) DEFAULT NULL,
   `merit_position` int(11) NOT NULL,
   `cumulative_merit_position` int(11) DEFAULT NULL,
-  `list` enum('Merit','FF','FFQ','TQ','No') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `list` enum('Merit','FF','FFQ','TQ','No','Fail','Invalid') COLLATE utf8_unicode_ci DEFAULT NULL,
   `group` enum('Science','Humanities','Arts','Commerce','Business','Business Studies') COLLATE utf8_unicode_ci DEFAULT NULL,
   `is_groupwise` tinyint(1) DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `results_exam_roll_foreign` (`exam_roll`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -170,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `search_stats` (
   `search_keyword` varchar(30) NOT NULL,
   `searched_from` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
