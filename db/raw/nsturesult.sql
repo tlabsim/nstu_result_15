@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2015 at 04:23 PM
+-- Generation Time: Dec 19, 2015 at 09:50 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `results` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `results_exam_roll_foreign` (`exam_roll`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `results_details` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `results_details_exam_roll_foreign` (`exam_roll`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -170,7 +170,26 @@ CREATE TABLE IF NOT EXISTS `search_stats` (
   `search_keyword` varchar(30) NOT NULL,
   `searched_from` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+
+--
+-- Dumping data for table `search_stats`
+--
+
+INSERT INTO `search_stats` (`id`, `search_keyword`, `searched_from`) VALUES
+(1, '10001', 'search_by_roll'),
+(2, '10001', 'search_by_roll'),
+(3, '10001', 'search_by_roll'),
+(4, '10001', 'search_by_roll'),
+(5, '10001', 'search_by_roll'),
+(6, '10001', 'search_by_roll'),
+(7, '80001', 'search_by_roll'),
+(8, '80001', 'search_by_roll'),
+(9, '80001', 'search_by_roll'),
+(10, '80001', 'search_by_roll'),
+(11, '80001', 'search_by_roll'),
+(12, '80001', 'search_by_roll'),
+(13, '80001', 'search_by_roll');
 
 -- --------------------------------------------------------
 
@@ -213,7 +232,13 @@ CREATE TABLE IF NOT EXISTS `units` (
   `humanities_seats` int(11) NOT NULL DEFAULT '0',
   `commerce_seats` int(11) NOT NULL DEFAULT '0',
   `ff_seats` int(11) NOT NULL,
+  `ff_science_seats` int(11) DEFAULT NULL,
+  `ff_commerce_seats` int(11) DEFAULT NULL,
+  `ff_humanities_seats` int(11) DEFAULT NULL,
   `tribal_seats` int(11) NOT NULL,
+  `tribal_science_seats` int(11) DEFAULT NULL,
+  `tribal_commerce_seats` int(11) DEFAULT NULL,
+  `tribal_humanities_seats` int(11) DEFAULT NULL,
   `is_result_published` tinyint(1) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -224,11 +249,11 @@ CREATE TABLE IF NOT EXISTS `units` (
 -- Dumping data for table `units`
 --
 
-INSERT INTO `units` (`id`, `unit`, `total_seats`, `is_groupwise`, `science_seats`, `humanities_seats`, `commerce_seats`, `ff_seats`, `tribal_seats`, `is_result_published`, `created_at`, `updated_at`) VALUES
-(1, 'A', 240, 0, 0, 0, 0, 10, 5, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 'B', 420, 0, 0, 0, 0, 10, 5, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(5, 'C', 60, 0, 0, 0, 0, 2, 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 'D', 140, 1, 60, 40, 40, 3, 2, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `units` (`id`, `unit`, `total_seats`, `is_groupwise`, `science_seats`, `humanities_seats`, `commerce_seats`, `ff_seats`, `ff_science_seats`, `ff_commerce_seats`, `ff_humanities_seats`, `tribal_seats`, `tribal_science_seats`, `tribal_commerce_seats`, `tribal_humanities_seats`, `is_result_published`, `created_at`, `updated_at`) VALUES
+(1, 'A', 240, 0, 0, 0, 0, 10, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'B', 420, 0, 0, 0, 0, 10, NULL, NULL, NULL, 5, NULL, NULL, NULL, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 'C', 60, 0, 0, 0, 0, 2, NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'D', 130, 1, 60, 40, 30, 8, 2, 3, 2, 3, 1, 1, 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 --
 -- Constraints for dumped tables
