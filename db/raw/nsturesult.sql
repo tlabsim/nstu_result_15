@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2015 at 09:50 PM
+-- Generation Time: Dec 20, 2015 at 02:23 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -121,14 +121,14 @@ CREATE TABLE IF NOT EXISTS `results` (
   `total_score` float(8,2) DEFAULT NULL,
   `merit_position` int(11) NOT NULL,
   `cumulative_merit_position` int(11) DEFAULT NULL,
-  `list` enum('Merit','FF','FFQ','TQ','No','Fail','Invalid') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `list` enum('Merit','FF','FFQ','TQ','PDQ','Ward','No','Fail','Invalid') COLLATE utf8_unicode_ci DEFAULT NULL,
   `group` enum('Science','Humanities','Arts','Commerce','Business','Business Studies') COLLATE utf8_unicode_ci DEFAULT NULL,
   `is_groupwise` tinyint(1) DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `results_exam_roll_foreign` (`exam_roll`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=20235 ;
 
 -- --------------------------------------------------------
 
@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `results_details` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `results_details_exam_roll_foreign` (`exam_roll`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=45341 ;
 
 -- --------------------------------------------------------
 
@@ -170,26 +170,7 @@ CREATE TABLE IF NOT EXISTS `search_stats` (
   `search_keyword` varchar(30) NOT NULL,
   `searched_from` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
-
---
--- Dumping data for table `search_stats`
---
-
-INSERT INTO `search_stats` (`id`, `search_keyword`, `searched_from`) VALUES
-(1, '10001', 'search_by_roll'),
-(2, '10001', 'search_by_roll'),
-(3, '10001', 'search_by_roll'),
-(4, '10001', 'search_by_roll'),
-(5, '10001', 'search_by_roll'),
-(6, '10001', 'search_by_roll'),
-(7, '80001', 'search_by_roll'),
-(8, '80001', 'search_by_roll'),
-(9, '80001', 'search_by_roll'),
-(10, '80001', 'search_by_roll'),
-(11, '80001', 'search_by_roll'),
-(12, '80001', 'search_by_roll'),
-(13, '80001', 'search_by_roll');
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=72 ;
 
 -- --------------------------------------------------------
 
