@@ -173,7 +173,7 @@
 							}
 							else
 							{
-								$cong_text .= ' You are in the main merit list.';
+								$cong_text .= ' You are in the main (non-waiting) merit list.';
 							}
 
 						}						
@@ -293,11 +293,11 @@
 
 									if($cum_merit > $group_seats)
 									{
-										$cong_text .= ' You are at position '.($cum_merit-$group_seats).' of merit waiting list of your group.';
+										$cong_text .= ' You are at position '.($cum_merit-$group_seats).' of merit waiting list for '.$group.' group.';
 									}
 									else
 									{
-										$cong_text .= ' So, you are also in the main merit list of your group.';
+										$cong_text .= ' So, you are also in the main merit list for '.$group.' group.';
 									}
 								}
 							}	
@@ -418,11 +418,11 @@
 
 									if($cum_merit > $group_seats)
 									{
-										$cong_text .= ' You are at position '.($cum_merit-$group_seats).' of merit waiting list of your group.';
+										$cong_text .= ' You are at position '.($cum_merit-$group_seats).' of merit waiting list for '.$group.' group.';
 									}
 									else
 									{
-										$cong_text .= ' So, you are also in the main merit list of your group.';
+										$cong_text .= ' So, you are also in the main merit list for '.$group.' group.';
 									}
 								}
 							}	
