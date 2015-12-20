@@ -440,10 +440,40 @@
 						break;
 
 					case 'PDQ':	
-						$cong_text = 'Your merit position is '.$merit_position.'.';					
+
+						if($igwr && !empty($group))
+						{
+							$cong_text = 'Your merit position (in '.$group.' group) is '.$merit_position.'.';		
+						}
+						else
+						{
+							$cong_text = 'Your merit position is '.$merit_position.'.';		
+						}
+									
 						
 						echo '<div id="alert_passed" class="alert alert-info"  style="margin-top: 10px;">';		
 						echo '<h4>Congratulation! You are enlisted in Physically Disabled quota.</h4>';
+						echo '<p>'.$cong_text.'</p>';
+						echo '<br><a class="btn btn-primary" href="/instructions">See the instructions</a>';
+						echo '</div>';
+
+						$passed = true;
+						break;
+
+					case 'Ward':	
+
+						if($igwr && !empty($group))
+						{
+							$cong_text = 'Your merit position (in '.$group.' group) is '.$merit_position.'.';		
+						}
+						else
+						{
+							$cong_text = 'Your merit position is '.$merit_position.'.';		
+						}
+									
+						
+						echo '<div id="alert_passed" class="alert alert-info"  style="margin-top: 10px;">';		
+						echo '<h4>Congratulation! You are enlisted in Ward quota.</h4>';
 						echo '<p>'.$cong_text.'</p>';
 						echo '<br><a class="btn btn-primary" href="/instructions">See the instructions</a>';
 						echo '</div>';
