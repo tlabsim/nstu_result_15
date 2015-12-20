@@ -144,3 +144,8 @@ body {
 	font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif !important;	
     z-index: 100000;
 }
+
+.table
+{
+    border-collapse: separate;
+}
