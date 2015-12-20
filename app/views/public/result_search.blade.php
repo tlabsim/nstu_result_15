@@ -196,7 +196,7 @@
 						{
 							$ff_seats = $unit_info->ff_seats;
 
-							$cong_text = 'Your merit position is '.$merit_position.'.';
+							$cong_text = 'Your position is '.$merit_position.'.';
 						
 							if($merit_position > $ff_seats)
 							{
@@ -242,7 +242,7 @@
 									break;
 							}
 
-							$cong_text = 'Your merit position (in '.$group.' group quota) is '.$merit_position.'.';
+							$cong_text = 'Your position (in '.$group.' group quota) is '.$merit_position.'.';
 						
 							if($merit_position > $ff_seats)
 							{
@@ -321,7 +321,7 @@
 						{
 							$tribal_seats = $unit_info->tribal_seats;
 
-							$cong_text = 'Your merit position is '.$merit_position.'.';
+							$cong_text = 'Your position is '.$merit_position.'.';
 						
 							if($merit_position > $tribal_seats)
 							{
@@ -367,7 +367,7 @@
 									break;
 							}
 
-							$cong_text = 'Your merit position (in '.$group.' group quota) is '.$merit_position.'.';
+							$cong_text = 'Your position (in '.$group.' group quota) is '.$merit_position.'.';
 						
 							if($merit_position > $tribal_seats)
 							{
